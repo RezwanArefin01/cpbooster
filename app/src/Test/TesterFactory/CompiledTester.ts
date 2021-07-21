@@ -100,7 +100,6 @@ export default class CompiledTester extends Tester {
   getDefaultExecutableFileName(debug: boolean): string {
     let defaultName = Util.replaceAll(Path.parse(this.filePath).name, " ", "");
     if (debug) defaultName += "debug";
-    defaultName += ".exe";
     return defaultName;
   }
 
@@ -113,12 +112,12 @@ export default class CompiledTester extends Tester {
   }
 
   static printCompilingMsg(): void {
-    console.log("Compiling...\n");
+    process.stdout.write("Compiling...\n");
   }
 
   static executeCompilation(compilerCommand: string, args: string[]): void {
     const compilation = spawnSync(compilerCommand, args);
-
+    process.stdout.write("\r\x1b[K");
     if (compilation.stderr) {
       let compileStderr = Buffer.from(compilation.stderr).toString("utf8").trim();
       if (compileStderr !== "") {

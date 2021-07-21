@@ -51,7 +51,7 @@ export default class CCServer {
       this.contestName = problemData.group;
       const contestPath = Path.join(config.contestsDirectory, problemData.group);
       if (!fs.existsSync(contestPath)) fs.mkdirSync(contestPath, { recursive: true });
-      const FilesPathNoExtension = `${Path.join(contestPath, problemData.name)}`;
+      let FilesPathNoExtension = `${Path.join(contestPath, Util.problemCode(problemData.name))}`;
       const extension = `.${config.preferredLang}`;
       const filePath = `${FilesPathNoExtension}${extension}`;
       SourceFileCreator.create(filePath, config, problemData.timeLimit, problemData.url);
