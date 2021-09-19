@@ -59,7 +59,8 @@ export default class Config {
         aliases: {
           codeforces: "54",
           atcoder: "4003",
-          omegaup: "cpp17-gcc"
+          omegaup: "cpp17-gcc",
+          yandex: "gcc7_3"
         },
         type: "compiled",
         commentString: "//"
