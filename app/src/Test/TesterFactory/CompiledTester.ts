@@ -112,7 +112,7 @@ export default class CompiledTester extends Tester {
   }
 
   static printCompilingMsg(): void {
-    process.stdout.write("Compiling...\n");
+    process.stdout.write("Compiling...");
   }
 
   static executeCompilation(compilerCommand: string, args: string[]): void {
