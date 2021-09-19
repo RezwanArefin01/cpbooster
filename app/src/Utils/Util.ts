@@ -98,6 +98,11 @@ export default class Util {
     return normalName;
   }
 
+  static normalizeFilePath(filePath: string): string {
+    const dirPath = Path.dirname(filePath);
+    return Path.join(dirPath, Util.normalizeFileName(Path.basename(filePath)));
+  }
+
   static problemCode(name: string) {
     let tokens = name.split(".");
     if (tokens.length <= 1) return name;
@@ -111,7 +116,7 @@ export default class Util {
     }
     langExtension = Util.replaceAll(langExtension, ".", "").toLowerCase();
     const hashes = [LangExtensions.python.toString(), LangExtensions.ruby.toString()];
-    if (hashes.includes(langextension)) {
+    if (hashes.includes(langExtension)) {
       return "#";
     } else {
       return "//";
